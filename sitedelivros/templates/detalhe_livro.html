@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}{{ book['title'] }} - NEOLIBRES{% endblock %}
+
+{% block content %}
+    <section class="book-detail-page">
+        {% if book %}
+            <img src="{{ book['cover_url_full'] }}" alt="Capa de {{ book['title'] }}">
+            <div class="book-info">
+                <h1>{{ book['title'] }}</h1>
+                <h2>{{ book['author'] }}</h2>
+                <p><strong>Ano:</strong> {{ book['year'] if book['year'] else 'N/A' }}</p>
+                <p class="description">{{ book['description'] if book['description'] else 'Sem descrição disponível.' }}</p>
+                <a href="{{ url_for('main.catalogo') }}" class="button back-button">Voltar ao Catálogo</a>
+            </div>
+        {% else %}
+            <p>Livro não encontrado.</p>
+        {% endif %}
+    </section>
+{% endblock %}

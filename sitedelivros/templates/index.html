@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Bem-vindo ao NEOLIBRES{% endblock %}
+
+{% block content %}
+    <section class="hero-section">
+        <h1>Bem-vindo ao NEOLIBRIS</h1>
+        <p>Conhecimento ao alcance de um clique.</p>
+        <a href="{{ url_for('main.registro') }}"><img src="{{ url_for('static', filename='img/NeoLibrisLogoSemFundo.peview.png') }}" alt="Ícone NEOLIBRIS" class="hero-image"></a>
+        <h1>Cadastre seus livros após fazer login!</h1>
+    </section>
+
+    <section class="carousel-section">
+        <div class="carousel-container">
+            <div class="slides">
+    <div class="slide">
+        <img src="{{ url_for('static', filename='img/carrosel1.jpg') }}" alt="Facilidade de uso">
+        <div class="slide-caption">
+            <h3>Simples e intuitivo</h3>
+            <p>Navegue pela plataforma com facilidade, sem complicações.</p>
+        </div>
+    </div>
+    <div class="slide">
+        <img src="{{ url_for('static', filename='img/carrosel2.jpg') }}" alt="Acesso em qualquer dispositivo">
+        <div class="slide-caption">
+            <h3>Acesse de onde quiser</h3>
+            <p>Compatível com celular, tablet ou computador.</p>
+        </div>
+    </div>
+    <div class="slide">
+        <img src="{{ url_for('static', filename='img/carrosel3.jpg') }}" alt="Biblioteca sempre aberta">
+        <div class="slide-caption">
+            <h3>Biblioteca 24h</h3>
+            <p>Leia seus livros favoritos a qualquer hora do dia.</p>
+        </div>
+    </div>
+</div>
+
+        </div>
+    </section>
+
+    <section class="about-us">
+        <h2>Quem somos nós</h2>
+        <p>Somos uma plataforma digital dedicada à disseminação do conhecimento por meio de livros digitais de vários gêneros e autores. Acreditamos no acesso à leitura como ferramenta de transformação.</p>
+    </section>
+
+    <section class="why-us">
+        <h2>Por que usar o NEOLIBRIS?</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <img src="https://placehold.co/80x80/2e3c4f/fff?text=24/7" alt="Acesso Online 24h">
+                <h3>Acesso online 24h</h3>
+                <p>Leia a qualquer hora, em qualquer lugar.</p>
+            </div>
+            <div class="feature-item">
+                <img src="https://placehold.co/80x80/2e3c4f/fff?text=LIVROS" alt="Acervo Variado">
+                <h3>Acervo Variado</h3>
+                <p>Diversos gêneros e autores.</p>
+            </div>
+            <div class="feature-item">
+                <img src="https://placehold.co/80x80/2e3c4f/fff?text=COMUNI" alt="Comunidade Ativa">
+                <h3>Comunidade Ativa</h3>
+                <p>Compartilhe ideias e descubra novas leituras.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
