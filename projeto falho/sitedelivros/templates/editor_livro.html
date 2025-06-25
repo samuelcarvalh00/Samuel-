@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Editar Livro - NEOLIBRES{% endblock %}
+
+{% block content %}
+    <section class="form-section">
+        <h1>Editar Livro: {{ book['title'] }}</h1>
+        {% if book %}
+            <form method="POST" action="{{ url_for('main.editar_livro', book_id=book['id']) }}" class="form-container">
+                <div class="form-group">
+                    <label for="titulo_do_livro">Título do livro:</label>
+                    <input type="text" id="titulo_do_livro" name="titulo_do_livro" value="{{ book['title'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="autor">Autor:</label>
+                    <input type="text" id="autor" name="autor" value="{{ book['author'] }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="ano">Ano:</label>
+                    <input type="number" id="ano" name="ano" value="{{ book['year'] if book['year'] else '' }}">
+                </div>
+                <div class="form-group">
+                    <label for="cover_image_url">Nome do Arquivo da Capa (em static/img/):</label>
+                    <input type="text" id="cover_image_url" name="cover_image_url" value="{{ book['cover_url_for_input'] }}" placeholder="ex: 1984.webp ou uma URL completa">
+                    <small class="text-gray-400 text-sm mt-1 block">Ou uma URL completa (ex: http://exemplo.com/capa.jpg)</small>
+                </div>
+                <div class="form-group">
+                    <label>Pré-visualização da Capa:</label>
+                    <img id="image-preview" src="{{ book['cover_url_display'] }}" alt="Pré-visualização da Capa" style="max-width: 150px; height: auto; display: block; margin-top: 10px; border-radius: 4px;">
+                </div>
+                <div class="form-group">
+                    <label for="description">Sinopse/Descrição:</label>
+                    <textarea id="description" name="description" rows="5">{{ book['description'] if book['description'] else '' }}</textarea>
+                </div>
+                <button type="submit" class="button">Salvar Alterações</button>
+                <a href="{{ url_for('main.cadastrar') }}" class="button cancel-button">Cancelar</a>
+            </form>
+        {% else %}
+            <p>Livro não encontrado para edição.</p>
+        {% endif %}
+    </section>
+{% endblock %}

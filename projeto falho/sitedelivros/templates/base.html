@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NEOLIBRIS{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/NeoLibrisLogoSemFundo.preview.png') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                 <a href="{{ url_for('main.index') }}">
+                <img src="{{ url_for('static', filename='img/logo.png') }}" class="logo-img" alt="Logo NEOLIBRIS">
+            </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{{ url_for('main.index') }}">Início</a></li>
+                {% if current_user.is_authenticated %}
+                    <li><a href="{{ url_for('main.catalogo') }}">Meu Catálogo</a></li>
+                    <li><a href="{{ url_for('main.cadastrar') }}">Registrar Livro</a></li>
+                    <li><a href="{{ url_for('main.logout') }}">Sair</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('main.login') }}">Login</a></li>
+                    <li><a href="{{ url_for('main.registro') }}">Registrar-se</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="flash-{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025 NEOLIBRES. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script_carrossel.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script_login.js') }}"></script>
+</body>
+</html>
